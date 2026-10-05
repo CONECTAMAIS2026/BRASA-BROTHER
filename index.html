@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brasa Brothers | Cardápio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#080808;
+    color:#fff;
+    padding-bottom:100px;
+}
+
+header{
+    background:#050505;
+    text-align:center;
+    padding:25px 15px;
+    border-bottom:3px solid #ff6500;
+}
+
+.logo{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid #ff6500;
+    box-shadow:0 0 30px rgba(255,90,0,.4);
+}
+
+header h1{
+    color:#ff6500;
+    font-size:30px;
+    margin-top:12px;
+    text-transform:uppercase;
+}
+
+header p{
+    color:#ddd;
+    margin-top:5px;
+    font-weight:bold;
+}
+
+.banner{
+    text-align:center;
+    padding:25px 15px;
+    background:
+    radial-gradient(circle,#351300 0%,#080808 70%);
+}
+
+.banner h2{
+    font-size:27px;
+    text-transform:uppercase;
+}
+
+.banner span{
+    color:#ff6500;
+}
+
+.banner p{
+    color:#ccc;
+    margin-top:8px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:10px 15px;
+}
+
+.titulo{
+    color:#ff6500;
+    border-left:5px solid #ff6500;
+    padding-left:10px;
+    margin:25px 0 15px;
+    font-size:23px;
+}
+
+.produto{
+    background:linear-gradient(145deg,#1a1a1a,#0d0d0d);
+    border:1px solid #292929;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:15px;
+}
+
+.produto-topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.produto h3{
+    font-size:19px;
+}
+
+.preco{
+    color:#ff6500;
+    font-size:21px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.descricao{
+    color:#aaa;
+    font-size:14px;
+    margin-top:8px;
+    line-height:1.4;
+}
+
+.btn{
+    border:none;
+    cursor:pointer;
+    width:100%;
+    margin-top:15px;
+    padding:13px;
+    border-radius:9px;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.btn-laranja{
+    background:#ff6500;
+    color:white;
+}
+
+.btn-laranja:hover{
+    background:#ff3d00;
+}
+
+.adicional-info{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.adicional-info strong{
+    color:#fff;
+}
+
+.adicional-info span{
+    color:#ff6500;
+    font-weight:bold;
+}
+
+
+/* CARRINHO */
+
+.carrinho{
+    background:#121212;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:18px;
+    margin-top:30px;
+}
+
+.carrinho h2{
+    color:#ff6500;
+    margin-bottom:15px;
+}
+
+.item-carrinho{
+    border-bottom:1px solid #333;
+    padding:12px 0;
+}
+
+.item-nome{
+    font-weight:bold;
+}
+
+.item-extras{
+    color:#aaa;
+    font-size:13px;
+    margin-top:5px;
+}
+
+.item-linha{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:8px;
+}
+
+.quantidade{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.quantidade button{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:50%;
+    background:#ff6500;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    font-size:22px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.total span:last-child{
+    color:#ff6500;
+}
+
+
+/* CHECKOUT */
+
+.checkout{
+    display:none;
+    background:#121212;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:18px;
+    margin-top:20px;
+}
+
+.checkout h2{
+    color:#ff6500;
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-top:13px;
+    margin-bottom:6px;
+    color:#ddd;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:13px;
+    border-radius:9px;
+    border:1px solid #333;
+    background:#080808;
+    color:white;
+    outline:none;
+}
+
+textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#ff6500;
+}
+
+.radio-area{
+    display:flex;
+    gap:10px;
+}
+
+.radio-option{
+    flex:1;
+    background:#080808;
+    border:1px solid #333;
+    border-radius:9px;
+    padding:12px;
+    text-align:center;
+    cursor:pointer;
+}
+
+.radio-option input{
+    width:auto;
+}
+
+.aviso{
+    color:#aaa;
+    font-size:12px;
+    margin-top:8px;
+}
+
+
+/* BOTAO FLUTUANTE */
+
+.carrinho-flutuante{
+    position:fixed;
+    bottom:18px;
+    left:15px;
+    right:15px;
+    max-width:670px;
+    margin:auto;
+    background:#ff6500;
+    color:white;
+    border:none;
+    border-radius:13px;
+    padding:15px;
+    font-size:16px;
+    font-weight:bold;
+    box-shadow:0 5px 25px rgba(0,0,0,.6);
+    z-index:1000;
+    cursor:pointer;
+}
+
+.badge{
+    background:white;
+    color:#ff6500;
+    padding:3px 8px;
+    border-radius:20px;
+    margin-left:5px;
+}
+
+.info{
+    text-align:center;
+    padding:30px 15px;
+    margin-top:30px;
+    background:#111;
+    border-top:2px solid #ff6500;
+}
+
+.info h2{
+    color:#ff6500;
+    margin-bottom:15px;
+}
+
+.info p{
+    color:#ccc;
+    margin:7px;
+}
+
+.whatsapp{
+    display:inline-block;
+    margin-top:15px;
+    padding:14px 25px;
+    border-radius:10px;
+    background:#25d366;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#777;
+    font-size:13px;
+}
+
+footer strong{
+    color:#ff6500;
+}
+
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    z-index:2000;
+    padding:20px;
+    overflow:auto;
+}
+
+.modal-box{
+    max-width:500px;
+    margin:50px auto;
+    background:#151515;
+    border:1px solid #444;
+    border-radius:16px;
+    padding:20px;
+}
+
+.modal-box h2{
+    color:#ff6500;
+}
+
+.modal-preco{
+    margin-top:5px;
+    color:#aaa;
+}
+
+.opcao{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#0b0b0b;
+    border:1px solid #333;
+    padding:13px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+.opcao input{
+    width:20px;
+    height:20px;
+}
+
+.fechar{
+    background:#333;
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<header>
+
+    <!--
+        COLOQUE O LOGO DA BRASA BROTHERS
+        NA MESMA PASTA DESTE ARQUIVO
+        COM O NOME: logo.jpg
+    -->
+
+    <img src="logo.jpg" class="logo" alt="Brasa Brothers">
+
+    <h1>Brasa Brothers</h1>
+
+    <p>🔥 HAMBÚRGUER NA BRASA 🔥</p>
+
+</header>
+
+
+<section class="banner">
+
+    <h2>
+        FEITO NA <span>BRASA!</span>
+    </h2>
+
+    <p>
+        Suculento, saboroso e feito pra você!
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+    <!-- HAMBÚRGUERES -->
+
+    <h2 class="titulo">🍔 Hambúrgueres</h2>
+
+
+    <div class="produto">
+
+        <div class="produto-topo">
+
+            <h3>Brasa Brother</h3>
+
+            <div class="preco">
+                R$ 12,99
+            </div>
+
+        </div>
+
+        <p class="descricao">
+            Hambúrguer preparado na brasa, com muito sabor.
+        </p>
+
+        <button
+            class="btn btn-laranja"
+            onclick="abrirAdicionais('Brasa Brother',12.99)"
+        >
+            ➕ ADICIONAR AO PEDIDO
+        </button>
+
+    </div>
+
+
+    <div class="produto">
+
+        <div class="produto-topo">
+
+            <h3>Brasa Brother + Refri 300ml</h3>
+
+            <div class="preco">
+                R$ 14,99
+            </div>
+
+        </div>
+
+        <p class="descricao">
+            Brasa Brother acompanhado de refrigerante 300ml.
+        </p>
+
+        <button
+            class="btn btn-laranja"
+            onclick="abrirAdicionais('Brasa Brother + Refri 300ml',14.99)"
+        >
+            ➕ ADICIONAR AO PEDIDO
+        </button>
+
+    </div>
+
+
+    <div class="produto">
+
+        <div class="produto-topo">
+
+            <h3>Brasa Brother + Refri + Batata</h3>
+
+            <div class="preco">
+                R$ 19,99
+            </div>
+
+        </div>
+
+        <p class="descricao">
+            Brasa Brother + refrigerante 300ml + batata.
+        </p>
+
+        <button
+            class="btn btn-laranja"
+            onclick="abrirAdicionais('Brasa Brother + Refri + Batata',19.99)"
+        >
+            ➕ ADICIONAR AO PEDIDO
+        </button>
+
+    </div>
+
+
+    <!-- ADICIONAIS -->
+
+    <h2 class="titulo">➕ Adicionais</h2>
+
+
+    <div class="adicional-info">
+        <strong>🍔 Hambúrguer</strong>
+        <span>R$ 9,00</span>
+    </div>
+
+    <div class="adicional-info">
+        <strong>🧀 Cheddar</strong>
+        <span>R$ 1,00</span>
+    </div>
+
+    <div class="adicional-info">
+        <strong>🍟 Batata frita</strong>
+        <span>R$ 8,00</span>
+    </div>
+
+
+    <!-- CARRINHO -->
+
+    <div class="carrinho" id="carrinho">
+
+        <h2>🛒 Seu pedido</h2>
+
+        <div id="listaCarrinho">
+
+            <p style="color:#777;">
+                Seu carrinho está vazio.
+            </p>
+
+        </div>
+
+        <div class="total">
+
+            <span>Total</span>
+
+            <span id="total">
+                R$ 0,00
+            </span>
+
+        </div>
+
+        <button
+            class="btn btn-laranja"
+            onclick="abrirCheckout()"
+            id="btnFinalizar"
+            style="display:none;"
+        >
+            FINALIZAR PEDIDO
+        </button>
+
+    </div>
+
+
+    <!-- CHECKOUT -->
+
+    <div class="checkout" id="checkout">
+
+        <h2>📋 Finalizar pedido</h2>
+
+        <label>Seu nome</label>
+
+        <input
+            type="text"
+            id="nome"
+            placeholder="Digite seu nome"
+        >
+
+
+        <label>Tipo do pedido</label>
+
+        <select id="tipoPedido" onchange="alterarTipoPedido()">
+
+            <option value="entrega">
+                🛵 Entrega
+            </option>
+
+            <option value="retirada">
+                🏪 Retirar no local
+            </option>
+
+        </select>
+
+
+        <div id="campoEndereco">
+
+            <label>Endereço</label>
+
+            <input
+                type="text"
+                id="endereco"
+                placeholder="Rua, número, complemento..."
+            >
+
+            <label>Referência</label>
+
+            <input
+                type="text"
+                id="referencia"
+                placeholder="Ex: próximo ao mercado..."
+            >
+
+        </div>
+
+
+        <label>Forma de pagamento</label>
+
+        <select id="pagamento">
+
+            <option value="Pix">
+                PIX
+            </option>
+
+            <option value="Dinheiro">
+                Dinheiro
+            </option>
+
+            <option value="Cartão de crédito">
+                Cartão de crédito
+            </option>
+
+            <option value="Cartão de débito">
+                Cartão de débito
+            </option>
+
+        </select>
+
+
+        <label>Observação</label>
+
+        <textarea
+            id="observacao"
+            placeholder="Ex: tirar cebola, mandar molho, etc."
+        ></textarea>
+
+
+        <p class="aviso">
+            Confira seus dados antes de finalizar o pedido.
+        </p>
+
+
+        <button
+            class="btn btn-laranja"
+            onclick="finalizarPedido()"
+        >
+            📲 ENVIAR PEDIDO NO WHATSAPP
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- INFORMAÇÕES -->
+
+<section class="info">
+
+    <h2>📍 Onde estamos</h2>
+
+    <p>
+        <strong>Recanto das Emas - DF</strong>
+    </p>
+
+    <p>
+        Quadra 114, atrás da Academia Smart Fit
+    </p>
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/5561993239255"
+        target="_blank"
+    >
+        💬 WHATSAPP
+    </a>
+
+    <p style="margin-top:15px;">
+        📸 @brasa_brother
+    </p>
+
+</section>
+
+
+<footer>
+
+    <p>
+        🔥 <strong>BRASA BROTHERS</strong>
+    </p>
+
+    <p>
+        Hambúrguer na brasa • Carne selecionada • Ingredientes frescos
+    </p>
+
+</footer>
+
+
+<!-- BOTÃO CARRINHO -->
+
+<button
+    class="carrinho-flutuante"
+    onclick="irParaCarrinho()"
+>
+
+    🛒 VER MEU PEDIDO
+
+    <span class="badge" id="quantidadeTotal">
+        0
+    </span>
+
+</button>
+
+
+<!-- MODAL DOS ADICIONAIS -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <h2 id="modalNome">
+            Produto
+        </h2>
+
+        <p class="modal-preco" id="modalPreco">
+            R$ 0,00
+        </p>
+
+
+        <h3 style="margin-top:20px;">
+            Escolha seus adicionais
+        </h3>
+
+
+        <div class="opcao">
+
+            <label style="margin:0;">
+                🍔 Hambúrguer
+                <br>
+                <small style="color:#aaa;">
+                    + R$ 9,00
+                </small>
+            </label>
+
+            <input
+                type="checkbox"
+                id="extraHamburguer"
+            >
+
+        </div>
+
+
+        <div class="opcao">
+
+            <label style="margin:0;">
+                🧀 Cheddar
+                <br>
+                <small style="color:#aaa;">
+                    + R$ 1,00
+                </small>
+            </label>
+
+            <input
+                type="checkbox"
+                id="extraCheddar"
+            >
+
+        </div>
+
+
+        <div class="opcao">
+
+            <label style="margin:0;">
+                🍟 Batata frita
+                <br>
+                <small style="color:#aaa;">
+                    + R$ 8,00
+                </small>
+            </label>
+
+            <input
+                type="checkbox"
+                id="extraBatata"
+            >
+
+        </div>
+
+
+        <button
+            class="btn btn-laranja"
+            onclick="adicionarProduto()"
+        >
+            ADICIONAR AO CARRINHO
+        </button>
+
+
+        <button
+            class="btn fechar"
+            onclick="fecharModal()"
+        >
+            CANCELAR
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* ==========================
+   CONFIGURAÇÕES
+========================== */
+
+const WHATSAPP = "5561993239255";
+
+let carrinho = [];
+
+let produtoAtual = null;
+
+
+/* ==========================
+   ABRIR ADICIONAIS
+========================== */
+
+function abrirAdicionais(nome, preco){
+
+    produtoAtual = {
+        nome: nome,
+        preco: preco
+    };
+
+    document.getElementById("modalNome").innerText = nome;
+
+    document.getElementById("modalPreco").innerText =
+        "R$ " + preco.toFixed(2).replace(".",",");
+
+    document.getElementById("extraHamburguer").checked = false;
+    document.getElementById("extraCheddar").checked = false;
+    document.getElementById("extraBatata").checked = false;
+
+    document.getElementById("modal").style.display = "block";
+}
+
+
+/* ==========================
+   FECHAR MODAL
+========================== */
+
+function fecharModal(){
+
+    document.getElementById("modal").style.display = "none";
+
+}
+
+
+/* ==========================
+   ADICIONAR PRODUTO
+========================== */
+
+function adicionarProduto(){
+
+    let extras = [];
+
+    let valorExtras = 0;
+
+
+    if(document.getElementById("extraHamburguer").checked){
+
+        extras.push("Hambúrguer adicional");
+
+        valorExtras += 9;
+
+    }
+
+
+    if(document.getElementById("extraCheddar").checked){
+
+        extras.push("Cheddar");
+
+        valorExtras += 1;
+
+    }
+
+
+    if(document.getElementById("extraBatata").checked){
+
+        extras.push("Batata frita");
+
+        valorExtras += 8;
+
+    }
+
+
+    let item = {
+
+        nome: produtoAtual.nome,
+
+        preco: produtoAtual.preco,
+
+        extras: extras,
+
+        valorExtras: valorExtras,
+
+        quantidade: 1
+
+    };
+
+
+    carrinho.push(item);
+
+
+    fecharModal();
+
+    atualizarCarrinho();
+
+    irParaCarrinho();
+
+}
+
+
+/* ==========================
+   ATUALIZAR CARRINHO
+========================== */
+
+function atualizarCarrinho(){
+
+    const lista =
+        document.getElementById("listaCarrinho");
+
+    lista.innerHTML = "";
+
+
+    if(carrinho.length === 0){
+
+        lista.innerHTML =
+            '<p style="color:#777;">Seu carrinho está vazio.</p>';
+
+        document.getElementById("btnFinalizar").style.display = "none";
+
+        atualizarQuantidade();
+
+        atualizarTotal();
+
+        return;
+    }
+
+
+    carrinho.forEach((item,index)=>{
+
+        let div = document.createElement("div");
+
+        div.className = "item-carrinho";
+
+
+        let extrasTexto =
+            item.extras.length > 0
+            ? "Adicionais: " + item.extras.join(", ")
+            : "Sem adicionais";
+
+
+        div.innerHTML = `
+
+            <div class="item-nome">
+                ${item.nome}
+            </div>
+
+            <div class="item-extras">
+                ${extrasTexto}
+            </div>
+
+            <div class="item-linha">
+
+                <div class="quantidade">
+
+                    <button onclick="diminuir(${index})">
+                        -
+                    </button>
+
+                    <strong>
+                        ${item.quantidade}
+                    </strong>
+
+                    <button onclick="aumentar(${index})">
+                        +
+                    </button>
+
+                </div>
+
+                <strong>
+                    ${formatarMoeda(
+                        (item.preco + item.valorExtras)
+                        * item.quantidade
+                    )}
+                </strong>
+
+            </div>
+
+            <button
+                onclick="remover(${index})"
+                style="
+                    margin-top:8px;
+                    background:none;
+                    border:none;
+                    color:#ff4b3e;
+                    cursor:pointer;
+                "
+            >
+                🗑️ Remover
+            </button>
+
+        `;
+
+        lista.appendChild(div);
+
+    });
+
+
+    document.getElementById("btnFinalizar").style.display =
+        "block";
+
+
+    atualizarQuantidade();
+
+    atualizarTotal();
+
+}
+
+
+/* ==========================
+   AUMENTAR
+========================== */
+
+function aumentar(index){
+
+    carrinho[index].quantidade++;
+
+    atualizarCarrinho();
+
+}
+
+
+/* ==========================
+   DIMINUIR
+========================== */
+
+function diminuir(index){
+
+    carrinho[index].quantidade--;
+
+    if(carrinho[index].quantidade <= 0){
+
+        carrinho.splice(index,1);
+
+    }
+
+    atualizarCarrinho();
+
+}
+
+
+/* ==========================
+   REMOVER
+========================== */
+
+function remover(index){
+
+    carrinho.splice(index,1);
+
+    atualizarCarrinho();
+
+}
+
+
+/* ==========================
+   TOTAL
+========================== */
+
+function calcularTotal(){
+
+    let total = 0;
+
+    carrinho.forEach(item=>{
+
+        total +=
+            (item.preco + item.valorExtras)
+            * item.quantidade;
+
+    });
+
+    return total;
+
+}
+
+
+function atualizarTotal(){
+
+    document.getElementById("total").innerText =
+        formatarMoeda(calcularTotal());
+
+}
+
+
+function formatarMoeda(valor){
+
+    return "R$ " +
+        valor.toFixed(2).replace(".",",");
+
+}
+
+
+/* ==========================
+   QUANTIDADE
+========================== */
+
+function atualizarQuantidade(){
+
+    let quantidade = 0;
+
+    carrinho.forEach(item=>{
+
+        quantidade += item.quantidade;
+
+    });
+
+    document.getElementById("quantidadeTotal")
+        .innerText = quantidade;
+
+}
+
+
+/* ==========================
+   IR PARA CARRINHO
+========================== */
+
+function irParaCarrinho(){
+
+    document.getElementById("carrinho")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* ==========================
+   CHECKOUT
+========================== */
+
+function abrirCheckout(){
+
+    if(carrinho.length === 0){
+
+        alert("Adicione algum produto ao pedido primeiro.");
+
+        return;
+
+    }
+
+    const checkout =
+        document.getElementById("checkout");
+
+    checkout.style.display = "block";
+
+    checkout.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ==========================
+   TIPO DO PEDIDO
+========================== */
+
+function alterarTipoPedido(){
+
+    let tipo =
+        document.getElementById("tipoPedido").value;
+
+    let campo =
+        document.getElementById("campoEndereco");
+
+
+    if(tipo === "retirada"){
+
+        campo.style.display = "none";
+
+    }else{
+
+        campo.style.display = "block";
+
+    }
+
+}
+
+
+/* ==========================
+   FINALIZAR WHATSAPP
+========================== */
+
+function finalizarPedido(){
+
+    if(carrinho.length === 0){
+
+        alert("Seu carrinho está vazio.");
+
+        return;
+
+    }
+
+
+    let nome =
+        document.getElementById("nome").value.trim();
+
+
+    if(nome === ""){
+
+        alert("Digite seu nome.");
+
+        document.getElementById("nome").focus();
+
+        return;
+
+    }
+
+
+    let tipo =
+        document.getElementById("tipoPedido").value;
+
+
+    let endereco =
+        document.getElementById("endereco").value.trim();
+
+
+    let referencia =
+        document.getElementById("referencia").value.trim();
+
+
+    let pagamento =
+        document.getElementById("pagamento").value;
+
+
+    let observacao =
+        document.getElementById("observacao").value.trim();
+
+
+    if(tipo === "entrega" && endereco === ""){
+
+        alert("Digite o endereço para entrega.");
+
+        document.getElementById("endereco").focus();
+
+        return;
+
+    }
+
+
+    let mensagem =
+        "🔥 *NOVO PEDIDO - BRASA BROTHERS* 🔥\n\n";
+
+
+    mensagem +=
+        "👤 *Cliente:* " + nome + "\n\n";
+
+
+    mensagem +=
+        "🍔 *PEDIDO:*\n";
+
+
+    carrinho.forEach((item,index)=>{
+
+        mensagem +=
+            "\n" +
+            (index + 1) +
+            ". " +
+            item.nome +
+            " x" +
+            item.quantidade +
+            "\n";
+
+
+        if(item.extras.length > 0){
+
+            mensagem +=
+                "   ➕ " +
+                item.extras.join(", ") +
+                "\n";
+
+        }
+
+
+        let valorItem =
+            (item.preco + item.valorExtras)
+            * item.quantidade;
+
+
+        mensagem +=
+            "   💰 " +
+            formatarMoeda(valorItem) +
+            "\n";
+
+    });
+
+
+    mensagem +=
+        "\n💰 *TOTAL: " +
+        formatarMoeda(calcularTotal()) +
+        "*\n\n";
+
+
+    if(tipo === "entrega"){
+
+        mensagem +=
+            "🛵 *Entrega*\n";
+
+        mensagem +=
+            "📍 Endereço: " +
+            endereco +
+            "\n";
+
+
+        if(referencia !== ""){
+
+            mensagem +=
+                "📌 Referência: " +
+                referencia +
+                "\n";
+
+        }
+
+    }else{
+
+        mensagem +=
+            "🏪 *Retirada no local*\n";
+
+    }
+
+
+    mensagem +=
+        "\n💳 *Pagamento:* " +
+        pagamento +
+        "\n";
+
+
+    if(observacao !== ""){
+
+        mensagem +=
+            "📝 *Observação:* " +
+            observacao +
+            "\n";
+
+    }
+
+
+    mensagem +=
+        "\n🔥 Obrigado por pedir na Brasa Brothers!";
+
+
+    let url =
+        "https://wa.me/" +
+        WHATSAPP +
+        "?text=" +
+        encodeURIComponent(mensagem);
+
+
+    window.open(url,"_blank");
+
+}
+
+
+/* ==========================
+   FECHAR MODAL CLICANDO FORA
+========================== */
+
+window.onclick = function(event){
+
+    let modal =
+        document.getElementById("modal");
+
+    if(event.target === modal){
+
+        fecharModal();
+
+    }
+
+}
+
+
+</script>
+
+</body>
+</html>
